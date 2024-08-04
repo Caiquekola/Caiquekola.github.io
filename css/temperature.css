@@ -1,0 +1,600 @@
+body {
+    position: relative;
+    overflow: auto;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://pa1.aminoapps.com/6813/ac992ff8e7d8f26ae07b137f297077df45c0267b_hq.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Estilo do botão de volta */
+#back-button {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #213644;
+}
+
+/* Estilo do cabeçalho da localização */
+#location-header h3 {
+    font-size: 1.5em;
+    color: #213644;
+}
+
+#location-header h4 {
+    font-size: 1.2em;
+    color: #495057;
+}
+
+/* Estilos para widgets de clima e condições de saúde */
+.weather-widgets, .health-conditions {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.weather-widget, .health-condition {
+    background-color: #c3cee6;
+    border-radius: 14px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 0 1 calc(50% - 20px);
+}
+
+@media (min-width: 768px) {
+    .weather-widget, .health-condition {
+        flex: 0 1 calc(33.33% - 20px);
+    }
+}
+
+@media (min-width: 992px) {
+    .weather-widget, .health-condition {
+        flex: 0 1 calc(25% - 20px);
+    }
+}
+
+/* Estilos para os títulos dos widgets */
+.weather-widget h4, .health-condition h4 {
+    margin: 10px 0;
+    font-size: 1em;
+    color: #213644;
+}
+
+/* Estilos para textos dentro dos widgets */
+.weather-widget p, .health-condition p {
+    margin: 5px 0;
+    font-size: 1em;
+    color: #495057;
+}
+
+/* Estilos específicos para ícones em condições de saúde */
+.health-condition i {
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+/* Responsividade das condições de saúde */
+@media (max-width: 768px) {
+    .health-condition {
+        width: 48%;
+    }
+}
+
+.imglogo {
+    margin-top: 0px;
+}
+
+.btn {
+    text-transform: uppercase;
+    background-color: #213644;
+    color: #ffffff;
+    width: 140px;
+    height: 50px;
+    margin: 15px;
+    text-align: center;
+    padding: 15px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-block;
+    transition: 0.1s;
+
+}
+.btn2 {
+    text-transform: uppercase;
+    background-color: #213644;
+    color: #ffffff;
+    width: 140px;
+    height: 50px;
+    margin: 15px;
+    text-align: center;
+    padding: 15px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-block;
+    transition: 0.1s;
+
+}
+.btn2:hover {
+    background-color: #dd0f01;
+}
+
+.btn2.btn2-animado {
+    justify-content: center;
+    animation: animate-outline 1s ease-out infinite;
+}
+
+.btn2.btn2-animado:hover {
+    animation: animate-outline2 1s ease-out infinite;
+}
+
+@keyframes animate-outline2 {
+    from {
+        outline: 0px solid #F58013;
+    }
+
+    to {
+        outline: 15px solid #ffcb9a;
+    }
+}
+
+@keyframes animate-outline {
+    from {
+        outline: 0px solid #2d4372;
+    }
+
+    to {
+        outline: 15px solid #c3cee6;
+    }
+}
+
+.banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.banner .banner-text {
+    margin: 25px;
+    text-align: center;
+    padding: 180px 90px;
+}
+
+.banner .banner-text h1 {
+    font-size: 100px;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.banner .banner-text p {
+    font-size: 20px;
+    max-width: 580px;
+    margin: 0 auto;
+    color: #F58013;
+}
+
+.banner-emergencia {
+    max-width: 1400px;
+    height: 600px;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+}
+
+header {
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: #8A96B6;
+    color: #8A96B6;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 15px;
+    
+    position: fixed;
+    margin: -10px 0 5px;
+    position: fixed;
+    top: 0;
+    right: 0px;
+    left: 0px;
+    z-index: 1000;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+}
+
+nav ul a {
+    color: #213644;
+    margin: 0 15px;
+    text-transform: uppercase;
+    font-size: 16px;
+    display: block;
+}
+
+nav ul a:not(.btn2):after {
+    content: "";
+    background-color: #dd0f01;
+    height: 3px;
+    width: 0%;
+    display: block;
+    margin: 0 auto;
+    transition: 0.3s;
+}
+
+nav ul a:hover::after {
+    width: 100%;
+}
+
+/*menu mobile*/
+nav .menu-icon{
+    cursor: pointer;
+    font-size: 25px;
+    color: #ffffff;
+    display: none;
+}
+/*menu mobile*/
+nav .close-icon{
+    cursor: pointer;
+    font-size: 30px;
+    color: #ffffff;
+    display: none;
+}
+
+
+.riscos-Impactos .container2 {
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+}
+
+.riscos-Impactos .riscos-Impactos-text {
+    width: 50%;
+    padding: 20px 150px;
+}
+
+.riscos-Impactos .riscos-Impactos-text h3 {
+    color: #213644;
+    font-size: 56px;
+}
+
+.riscos-Impactos .riscos-Impactos-text p {
+    margin-top: 40px;
+    margin: 5px 5px 10px;
+}
+
+.riscos-Impactos .riscos-Impactos-img {
+    width: 80%;
+}
+
+
+.riscos-Impactos .riscos-Impactos-img .ul-lista {
+    color: #213644;
+    margin-left: 100px;
+    width: 80%;
+    font-size: 20px;
+}
+
+.apos .container2{
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+}
+
+.apos .apos-text {
+    width: 50%;
+    padding: 20px 150px;
+}
+
+.apos .apos-text h3 {
+    color: #213644;
+    font-size: 56px;
+}
+
+.apos .apos-img {
+    width: 80%;
+    padding-left: 50px;
+}
+
+.apos .apos-img img {
+    margin-right: 100px;
+    width: 80%;
+}
+.apos .apos-img .ul-lista {
+    color: #213644;
+    margin-left: 100px;
+    width: 80%;
+    font-size: 20px;
+}
+
+.medidas-prevencao{
+    padding-top: 50px;
+}
+
+/* Centraliza o botão na seção medidas-prevencao */
+.medidas-prevencao .btn2-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 0; /* Ajusta o espaçamento ao redor do botão */
+}
+
+/* Aumenta o tamanho do botão */
+.medidas-prevencao .btn2 {
+    width: 200px; /* Aumenta a largura do botão */
+    height: 60px; /* Aumenta a altura do botão */
+    font-size: 18px; /* Aumenta o tamanho da fonte */
+    padding: 10px 20px; /* Ajusta o espaçamento interno do botão */
+}
+.medidas-prevencao h3 {
+    text-align: center;
+    color: #18243D;
+}
+
+.medidas-prevencao p {
+    margin-bottom: 20px;
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+}
+.acoes{
+    padding-top: 50px;
+}
+.acoes h3 {
+    text-align: center;
+    color: #213644;
+}
+
+.acoes p {
+    margin-bottom: 20px;
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.acoes .card-item {
+    background-color: #213644;
+    margin: 15px;
+    border-radius: 14px;
+    text-align: center;
+    width: 250px;
+    height: 180px;
+    transition: 0.3s;
+}
+
+.acoes .card-item img {
+    border-radius: 20px;
+    width: 80px;
+    display: block;
+    margin: 10px auto;
+}
+
+.acoes .card-item .nome-acoes {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 5px;
+    transition: 0.3s;
+    color: #ffffff;
+}
+
+.acoes .card-item .desc-acoes {
+    font-size: 15px;
+    padding: 0 15px;
+    color: #ffffff;
+    transition: 0.3s;
+}
+
+.acoes .card-item:hover{
+    background-color: #dd0f01;
+    margin-top: -5px;
+}
+
+.depoimentos-usuarios .card-item:hover .nome-user,
+.depoimentos-usuarios .card-item:hover .depoimento-user{ 
+    color: #ffffff;
+}
+
+
+footer {
+    background-color: #213644;
+    color: white;
+    text-align: center;
+    padding: 40px 0;
+    margin-top: auto; /* Empurra o rodapé para o final da página */
+    width: 100%;
+}
+
+footer .container {
+    max-width: 1400px; /* ou a largura desejada para o conteúdo */
+    margin: 0 auto;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+@media (max-width: 830px) {
+    /* Estilos para o menu mobile */
+    nav .ul {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #213644;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        clip-path: circle(0% at 100% 0);
+        transition: 0.7s;
+        z-index: 1001; /* Certifique-se de que o menu esteja acima de outros elementos */
+    }
+
+    nav .ul.open {
+        clip-path: circle(141.4% at 100% 0);
+    }
+
+    nav .ul a {
+        margin: 10px 0;
+        font-size: 16px;
+        color: #ffffff;
+        position: relative; /* Necessário para o efeito da linha */
+    }
+
+     /* Sobrescrevendo a cor da linha para o mobile */
+     nav .ul a:not(.btn2)::after {
+        background-color: #ffffff; /* Cor da linha branca no mobile */
+    }
+    
+    nav .ul a:hover::after {
+        width: 100%;
+        background-color: #ffffff; /* Cor da linha branca no hover */
+    }
+    /* Estilos para o botão de login */
+    nav ul a.btn2 {
+        background-color: #ffffff; /* Nova cor de fundo do botão de login */
+        color: #213644;
+    }
+
+    nav ul a.btn2:hover {
+        background-color: #dd0f01; /* Cor de fundo ao passar o mouse */
+        color: #ffffff;
+    }
+
+    nav .menu-icon {
+        padding-right: 50px;
+        display: block;
+        color: #213644; /* Altere a cor conforme necessário */
+    }
+
+    nav .close-icon {
+        display: block;
+        position: absolute;
+        top: 46px;
+        right: 28px;
+        color: #ffffff; /* Altere a cor conforme necessário */
+    }
+}
+/* Estilos para o modal */
+.modal {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5); /* Fundo escurecido */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% a partir do topo e centralizado horizontalmente */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Largura do conteúdo do modal */
+    max-width: 500px; /* Largura máxima */
+    border-radius: 10px;
+}
+.modal-content h2{
+    text-align: center;
+    color: #213644;
+    padding-bottom: 10px;
+}
+.modal-content ul{
+    padding-left: 10px;
+     margin: 10px;
+     color: #213644;
+}
+
+.modal-content ul a {
+    padding: 20px;
+    padding-left: 10px;
+    color: #213644;
+    margin: 10px 15px;
+    text-transform: uppercase;
+    font-size: 16px;
+    display: block;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.side-menu {
+    height: 100%; /* Ocupa toda a altura da tela */
+    width: 0; /* Largura inicial 0, para ocultar */
+    position: fixed; /* Fixa no lado direito da tela */
+    z-index: 1000; /* Aparece acima de outros elementos */
+    top: 0;
+    right: 0; /*Posiciona o menu no lado direito*/
+    background-color: #213644; /* Cor de fundo do menu */
+    overflow-x: hidden; /* Esconde o overflow horizontal */
+    transition: 0.5s; /* Animação de abertura e fechamento */
+    padding-top: 60px; /* Espaço no topo */
+}
+
+/* Estilo para os links no menu */
+.side-menu a {
+    padding: 12 15px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
+}
+
+/* Estilo para o botão de fechar */
+.side-menu .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+}

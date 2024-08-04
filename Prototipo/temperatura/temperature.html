@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Temperatura</title><link rel="icon" href="/images/logo.png" type="image/x-icon">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/Prototipo/temperatura/temperature.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Para gráficos -->
+</head>
+
+<body>
+    <div class="banner-emergencia">
+        <section class="banner">
+            <div class="banner-text">
+                <h1 style="color: #213644;">Emergências</h1>
+                <p style="color: #dd0f01;">Busque por maiores informações</p>
+                <section class="pesquisa"> 
+                    <div class="caixa-pesquisa">
+                        <input type="text" class="pesquisa-text" placeholder="Busque pela sua cidade">
+                        <a href="#" class="pesquisa-btn">
+                            <i class="fa fa-search" aria-hidden="true" style="height: 20px; width: 20px;"></i>
+                        </a>
+                    </div>
+                </section>
+                <!--Item 1-->
+                <div class="rows-cards">
+                    <div class="rows-card-item">
+                        <p class="nome-emergencia"><strong>Terremotos</strong></p>
+                        <p class="desc-emergencia">Saiba mais</p>
+                    </div>
+                <!--Final item 1-->
+                <!--Item 2-->
+                    <div class="rows-card-item">
+                        <p class="nome-emergencia"><strong>Deslizamento de terra</strong></p>
+                        <p class="desc-emergencia">Saiba mais</p>
+                    </div>
+                <!--Final item 2-->
+                <!--Item 3-->
+                    <div class="rows-card-item">
+                        <p class="nome-emergencia"><strong>Enchentes e inundações</strong></p>
+                        <p class="desc-emergencia">Saiba mais</p>
+                    </div>
+                <!--Final item 3-->
+                <!--Item 4-->
+                    <div class="rows-card-item">
+                        <p class="nome-emergencia"><strong>Erupções vulcanicas</strong></p>
+                        <p class="desc-emergencia">Saiba mais</p>
+                    </div>
+                <!--Final item 4-->
+                <!--Item 5-->
+                    <div class="rows-card-item">
+                        <p class="nome-emergencia"><strong>Furacões e tufões</strong></p>
+                        <p class="desc-emergencia">Saiba mais</p>
+                    </div>
+                <!--Final item 5-->
+                <!--Item 6-->
+                    <div class="rows-card-item">
+                        <p class="nome-emergencia"><strong>Nevascas</strong></p>
+                        <p class="desc-emergencia">Saiba mais</p>
+                    </div>
+                <!--Final item 6-->
+                <!--Item 7-->
+                    <div class="rows-card-item">
+                        <p class="nome-emergencia"><strong>Ondas de calor</strong></p>
+                        <p class="desc-emergencia">Saiba mais</p>
+                    </div>
+                <!--Final item 7-->
+                <!--Item 8-->
+                    <div class="rows-card-item">
+                        <p class="nome-emergencia"><strong>Secas</strong></p>
+                        <p class="desc-emergencia">Saiba mais</p>
+                    </div>
+                <!--Final item 8-->
+                <!--Item 9-->
+                    <div class="rows-card-item">
+                        <p class="nome-emergencia"><strong>Tempestades tropicais</strong></p>
+                        <p class="desc-emergencia">Saiba mais</p>
+                    </div>
+                <!--Final item 9-->
+                <!--Item 10-->
+                    <div class="rows-card-item">
+                        <p class="nome-emergencia"><strong>Tornados</strong></p>
+                        <p class="desc-emergencia">Saiba mais</p>
+                    </div>
+                <!--Final item 10-->
+                <!--Item 11-->
+                    <div class="rows-card-item">
+                        <p class="nome-emergencia"><strong>Tsunamis</strong></p>
+                        <p class="desc-emergencia">Saiba mais</p>
+                    </div>
+                </div>
+                <!--Final item 11-->
+            </div>
+        </section>
+    </div>
+
+
+    <div class="container">
+        <button id="back-button" class="btn btn-light">
+            <i class="fa fa-chevron-left"></i> 
+        </button>
+        <div id="weather-alerts" class="my-4"></div>
+        <!-- <canvas id="temperature-chart" class="my-4" width="400" height="200"></canvas> -->
+
+        <div class="mb-4">
+            <label for="time-range" class="form-label">Selecione o intervalo de tempo:</label>
+             <select id="time-range" class="form-select">
+                <option value="48">Últimos 2 dias</option>
+                <option value="72">Últimos 3 dias</option>
+                <option value="24" selected>Últimas 24 horas</option>
+                <option value="1">Hoje</option>
+                <option value="3">Próximos 3 dias</option>
+                <option value="5">Próximos 5 dias</option>
+                <option value="7">Próxima semana</option>
+               
+            </select>
+        </div> 
+
+        <div id="weather-forecast" class="mb-4"></div>
+
+
+        <h3>Condições de Saúde</h3>
+        <div id="health-conditions" class="mb-4">
+            <ul id="health-list"></ul>
+        </div>
+
+        <div id="weather-humidity" class="my-4"></div>
+        <div id="weather-rain" class="my-4"></div>
+
+    </div>
+
+    <script src="/Prototipo/temperatura/temperature.js"></script>
+</body>
+
+</html>
