@@ -220,7 +220,7 @@ function getWeatherData(lat, lon) {
           const alertStatus =
             data.alerts && data.alerts.length > 0
               ? data.alerts[0].description
-              : "Nenhum alerta";
+              : "Nenhum alerta sobre Enchentes";
           updateLocationHeader(regionName, temp, alertStatus);
         } else {
           console.error("Dados meteorológicos não estão no formato esperado");
