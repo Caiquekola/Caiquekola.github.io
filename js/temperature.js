@@ -14,15 +14,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const regionName = urlParams.get('region') || 'Localização Desconhecida';
 
     // Atualiza o cabeçalho da localização
-    function updateLocationHeader(location, currentTemperature) {
-        const locationHeader = document.getElementById('location-header');
-        if (locationHeader) {
-            locationHeader.innerHTML = `
+  function updateLocationHeader(location, currentTemperature, alertStatus) {
+    const locationHeader = document.getElementById("location-header");
+    if (locationHeader) {
+      locationHeader.innerHTML = `
                 <h2 style="text-align: center;">${location}</h2>
                 <h1 style="text-align: center;">${temp} °C</h1>
+                <h3 style="text-align: center; color: red;">${alertStatus}</h3>
             `;
-        }
     }
+  }
 
     // Função para obter o nome da região a partir das coordenadas
     function getRegionName(lat, lon) {
@@ -191,34 +192,44 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Função para obter dados meteorológicos
 function getWeatherData(lat, lon) {
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation_probability,precipitation,rain,wind_speed_10m,uv_index&daily=temperature_2m_max,temperature_2m_min,precipitation_hours,precipitation_probability_max`;
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation_probability,precipitation,rain,wind_speed_10m,uv_index&daily=temperature_2m_max,temperature_2m_min,precipitation_hours,precipitation_probability_max&alerts=true`;
 
     fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data); // Verifique os dados retornados
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data); // Verifique os dados retornados
 
-            // Verifique se os dados estão corretos antes de mapear
-            if (data && data.hourly && data.hourly.time) {
-                const weatherData = data.hourly.time.map((time, index) => ({
-                    time: time,
-                    temperature: data.hourly.temperature_2m[index],
-                    apparentTemperature: data.hourly.apparent_temperature[index] || 0,
-                    windSpeed: data.hourly.wind_speed_10m[index] || 0, // Corrigido para usar wind_speed_10m
-                    precipitationProbability: data.hourly.precipitation_probability[index] || 0,
-                    uvIndex: data.hourly.uv_index[index] || 0,
-                    humidity: data.hourly.relative_humidity_2m[index] || 'N/A', // A umidade está correta aqui
-                    maxTemperature: data.daily.temperature_2m_max[0],
-                    minTemperature: data.daily.temperature_2m_min[0]
-                }));
+        // Verifique se os dados estão corretos antes de mapear
+        if (data && data.hourly && data.hourly.time) {
+          const weatherData = data.hourly.time.map((time, index) => ({
+            time: time,
+            temperature: data.hourly.temperature_2m[index],
+            apparentTemperature: data.hourly.apparent_temperature[index] || 0,
+            windSpeed: data.hourly.wind_speed_10m[index] || 0,
+            precipitationProbability:
+              data.hourly.precipitation_probability[index] || 0,
+            uvIndex: data.hourly.uv_index[index] || 0,
+            humidity: data.hourly.relative_humidity_2m[index] || "N/A",
+            maxTemperature: data.daily.temperature_2m_max[0],
+            minTemperature: data.daily.temperature_2m_min[0],
+          }));
 
-                renderWeatherWidgets(weatherData); // Chama a função para renderizar os widgets
-            } else {
-                console.error('Dados meteorológicos não estão no formato esperado');
-            }
-        })
-        .catch(error => console.error('Erro ao obter dados meteorológicos:', error));
-}
+          renderWeatherWidgets(weatherData); // Chama a função para renderizar os widgets
+
+          // Obtém o status de alerta
+          const alertStatus =
+            data.alerts && data.alerts.length > 0
+              ? data.alerts[0].description
+              : "Nenhum alerta";
+          updateLocationHeader(regionName, temp, alertStatus);
+        } else {
+          console.error("Dados meteorológicos não estão no formato esperado");
+        }
+      })
+      .catch((error) =>
+        console.error("Erro ao obter dados meteorológicos:", error)
+      );
+  }
 
 
     // Obtém o nome da região a partir das coordenadas e renderiza as informações
@@ -242,3 +253,9 @@ function closeSideMenu() {
 
 // Evento para abrir o menu ao clicar no botão "Emergências"
 document.getElementById("btnEmergencias").onclick = openSideMenu;
+
+
+
+// Variável para armazenar os parâmetros da URL
+
+
