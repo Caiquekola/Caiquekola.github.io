@@ -1,12 +1,30 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 // https://vite.dev/config/
+import path from 'node:path';
+import { createRequire } from 'node:module';
+
+import { normalizePath } from 'vite';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
+
+const require = createRequire(import.meta.url);
+const standardFontsDir = normalizePath(
+  path.join(path.dirname(require.resolve('pdfjs-dist/package.json')), 'standard_fonts')
+);
+
 export default defineConfig({
-  plugins: [react()],
-  optimizeDeps: {
-    exclude: ['pdfjs-dist'] // importante excluir para não deixar Vite tentar otimizar ele
-  },
+  plugins: [
+    react(),
+    viteStaticCopy({
+      targets: [
+        {
+          src: standardFontsDir,
+          dest: '',
+        },
+      ],
+    }),
+  ],
   // server: {
   //   port: 3000, // porta padrão do Vite
   //   open: true, // abre o navegador automaticamente
@@ -18,4 +36,4 @@ export default defineConfig({
   //     },
   //   },
   // },
-})
+});
