@@ -1,0 +1,49 @@
+✅ 1. Gerar novo par de chaves RSA (formato OpenSSH por padrão)
+Abra o Prompt de Comando ou PowerShell:
+
+ssh-keygen -t rsa -b 2048 -m PEM -f C:\Users\SeuUsuario\.ssh\jwt_rsa -C "jwt key"
+
+Explicando:
+
+-t rsa → tipo RSA
+-b 2048 → 2048 bits
+-m PEM → gera no formato PKCS#1 PEM (não OpenSSH!)
+-f → define o caminho e nome base dos arquivos
+-C → comentário
+Isso vai gerar dois arquivos:
+jwt_rsa → chave privada (formato PKCS#1 PEM)
+jwt_rsa.pub → chave pública (formato OpenSSH)
+
+✅ 2. Converter a chave pública para formato PEM compatível com Java
+A .pub gerada está no formato OpenSSH. Para converter para o formato X.509 PEM:
+
+Se você instalou o Git Bash (com OpenSSL incluso), execute:
+
+bash
+ssh-keygen -f jwt_rsa -e -m PEM > jwt_rsa_public.pem
+
+✅ 3. Converter a chave privada para formato PKCS#8 (Java/Spring)
+Agora, usando o Git Bash novamente:
+
+bash
+openssl pkcs8 -topk8 -inform PEM -outform PEM -in jwt_rsa -out jwt_rsa_pkcs8.pem -nocrypt
+
+Isso converte de:
+
+-----BEGIN RSA PRIVATE KEY-----
+para:
+
+-----BEGIN PRIVATE KEY-----
+
+Chave publica
+openssl rsa -in jwt_rsa -pubout -out jwt_rsa_public.pem
+
+
+
+✅ Resultado esperado
+jwt_rsa → chave privada original (PKCS#1)
+
+jwt_rsa_pkcs8.pem → chave privada PKCS#8 (usada no Java)
+
+jwt_rsa_public.pem → chave pública PEM (usada no Java)
+
