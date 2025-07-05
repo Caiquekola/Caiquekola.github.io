@@ -26,7 +26,7 @@ function Projects() {
               title="Doutor Magnus"
               description="A professional landing page for a Doctor"
               // ghLink="https://github.com/Caiquekola/VirtualTerminal"
-              demoLink="https://drmagnus.caiquekola.com.br/"  
+              demoLink="https://roaring-cassata-879c8a.netlify.app//"  
             />
           </Col>
           <Col md={4} className="project-card">
