@@ -6,6 +6,8 @@ import Decifra from "../../Assets/Projects/Decifra.png";
 import VirtualTerminal from "../../Assets/Projects/VirtualTerminal.png";
 import RicardoBarbearia from "../../Assets/Projects/RicardoBarbearia.png";
 import DrMagnus from '../../Assets/Projects/DrMagnus.png'
+import Imobiliaria from '../../Assets/Projects/Imobiliaria.png'
+
 
 function Projects() {
   return (
@@ -48,7 +50,8 @@ function Projects() {
               ghLink="https://github.com/Caiquekola/app-barber-frontend"
               // demoLink="https://ricardobarbearia.netlify.app/"  
             />
-          </Col>+<Col md={4} className="project-card">
+          </Col>
+          <Col md={4} className="project-card">
             <ProjectCard
               imgPath={Decifra}
               isBlog={false}
@@ -58,7 +61,16 @@ function Projects() {
               //demoLink="https://ricardobarbearia.netlify.app/"  
             />
           </Col>
-          
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={Imobiliaria}
+              isBlog={false}
+              title="Imobiliária"
+              description="A website for a real estate agency"
+              ghLink="https://github.com/Caiquekola/"
+              demoLink="https://imobiliariauniversal.netlify.app/"  
+            />
+          </Col>
         </Row>
       </Container>
     </Container>
